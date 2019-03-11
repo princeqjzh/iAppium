@@ -29,7 +29,6 @@ public class ContactManagerTest extends AndroidUIBase {
         logger.info("在 Contact Email中输入 email地址");
 
         //向下滑动
-//        driver.swipe(100, 500, 100, 100, 2);
         driver.findElementByClassName("android.widget.Button").click();
         logger.info("单击 Save 按钮 ...");
 
