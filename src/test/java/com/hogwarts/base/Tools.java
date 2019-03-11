@@ -35,7 +35,7 @@ public class Tools {
         if(al != null && al.size() > 0){
             deviceRelease = al.get(0);
         }
-        logger.info("安卓设备平台版本：" + deviceRelease);
+        logger.info("安卓设备平台版本：" + deviceRelease + "\n");
         return deviceRelease;
     }
 
