@@ -22,7 +22,7 @@ public class ContactManagerTest extends AndroidUIBase {
         logger.info("单击 Add Contact 按钮");
 
         List<WebElement> textFieldsList = driver.findElementsByClassName("android.widget.EditText");
-        textFieldsList.get(0).sendKeys("阿三");
+        textFieldsList.get(0).sendKeys("A San");
         logger.info("在 Contact Name 中输入 阿三 ...");
 
         textFieldsList.get(2).sendKeys("asan@example.com");
