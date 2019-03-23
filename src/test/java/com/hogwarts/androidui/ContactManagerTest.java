@@ -38,7 +38,7 @@ public class ContactManagerTest extends AndroidUIBase {
         for(int i = 0; i < textViews.size(); i++){
             WebElement elem = textViews.get(0);
             String title = elem.getText();
-            if(title != null && title.equalsIgnoreCase("Contact Manager")){
+            if(title != null && title.equalsIgnoreCase("Contact Manager-fail")){
                 result = true;
             }
         }
