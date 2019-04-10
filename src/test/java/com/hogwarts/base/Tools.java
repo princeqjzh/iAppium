@@ -15,6 +15,18 @@ public class Tools {
     private static Logger logger = Logger.getLogger(Tools.class);
 
     /**
+     * 秒等
+     * @param sec
+     */
+    public static void wait(int sec) {
+        try {
+            Thread.sleep(sec * 1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * 获取安卓的uid, 如果连接多台设备，则随机抽取一个；
      * @return
      */

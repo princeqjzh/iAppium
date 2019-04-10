@@ -1,6 +1,8 @@
 package com.hogwarts.androidui;
 
 import com.hogwarts.base.AndroidUIBase;
+import com.hogwarts.base.AndroidUITasks;
+import com.hogwarts.base.Tools;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
@@ -15,22 +17,23 @@ public class ContactManagerTest extends AndroidUIBase {
     private Logger logger = Logger.getLogger(ContactManagerTest.class);
 
     @Test
-    public void runTest(){
+    public void runTest() throws Exception {
         testcaseName = "ContactManager安卓自动化测试";
-        WebElement el = driver.findElement(By.className("android.widget.Button"));
-        el.click();
-        logger.info("单击 Add Contact 按钮");
 
-        List<WebElement> textFieldsList = driver.findElementsByClassName("android.widget.EditText");
-        textFieldsList.get(0).sendKeys("A San");
-        logger.info("在 Contact Name 中输入 阿三 ...");
+        AndroidUITasks.clickAddContactBtn(driver);
 
-        textFieldsList.get(2).sendKeys("asan@example.com");
-        logger.info("在 Contact Email中输入 email地址");
+        AndroidUITasks.inputContactName(driver);
 
-        //向下滑动
-        driver.findElementByClassName("android.widget.Button").click();
-        logger.info("单击 Save 按钮 ...");
+        AndroidUITasks.inputEmail(driver);
+
+        AndroidUITasks.clickSaveBtn(driver);
+
+        Tools.wait(2);
+
+        //workaround 权限问题
+        AndroidUITasks.clickOKBtnOnConfirmUI(driver);
+
+        Tools.wait(2);
 
         //验证是否回到了首页
         List<WebElement> textViews = driver.findElementsByClassName("android.widget.TextView");
