@@ -32,7 +32,7 @@ public class Tools {
      */
     public static String getAndroidDeviceId(){
         String androidId = getRandomAndroidDeviceId();
-        logger.info("Android device uid：" + androidId);
+        logger.info("Android device uid : " + androidId);
         return androidId;
     }
 
