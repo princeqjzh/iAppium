@@ -18,7 +18,7 @@ public class ContactManagerTest extends AndroidUIBase {
 
     @Test
     public void runTest() throws Exception {
-        testcaseName = "ContactManager安卓自动化测试";
+        testcaseName = "ContactManager android automation test";
 
         AndroidUITasks.clickAddContactBtn(driver);
 
@@ -49,7 +49,7 @@ public class ContactManagerTest extends AndroidUIBase {
                 result = true;
             }
         }
-        Assert.assertTrue("校验测试结果：验证返回了首页。", result);
+        Assert.assertTrue("VP: verify back to the main screen", result);
 
     }
 }

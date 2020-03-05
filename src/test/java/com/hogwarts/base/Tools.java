@@ -32,7 +32,7 @@ public class Tools {
      */
     public static String getAndroidDeviceId(){
         String androidId = getRandomAndroidDeviceId();
-        logger.info("安卓设备uid：" + androidId);
+        logger.info("Android device uid：" + androidId);
         return androidId;
     }
 
@@ -47,7 +47,7 @@ public class Tools {
         if(al != null && al.size() > 0){
             deviceRelease = al.get(0);
         }
-        logger.info("安卓设备平台版本：" + deviceRelease + "\n");
+        logger.info("Android release version " + deviceRelease + "\n");
         return deviceRelease;
     }
 

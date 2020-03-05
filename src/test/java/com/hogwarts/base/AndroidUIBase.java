@@ -35,7 +35,7 @@ public abstract class AndroidUIBase {
         File appDir = new File(classpathRoot, "apps");
         File app = new File(appDir, "ContactManager.apk");
         String absolutePath = app.getAbsolutePath();
-        logger.info("apk 路径: " + absolutePath);
+        logger.info("apk full path: " + absolutePath);
 
         //设置Desired Capabilities相关参数
         DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -59,12 +59,12 @@ public abstract class AndroidUIBase {
         capabilities.setCapability("noReset", true);
 
         driver = new AndroidDriver(new URL(appiumURL), capabilities);
-        logger.info("创建drvier实例 ...");
+        logger.info("Implement drvier instance ...");
     }
 
     @After
     public void tearDown(){
-        logger.info("自动化测试" + testcaseName + "结束。");
+        logger.info("Automation test " + testcaseName + " finished.");
 
         if (driver == null) {
             return;
