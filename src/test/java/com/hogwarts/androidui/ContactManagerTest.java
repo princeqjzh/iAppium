@@ -31,11 +31,7 @@ public class ContactManagerTest extends AndroidUIBase {
         Tools.wait(2);
 
         //workaround 权限问题
-        try {
-            AndroidUITasks.clickOKBtnOnConfirmUI(driver);
-        } catch (Exception ex) {
-            logger.info("No confirm UI shown!");
-        }
+        AndroidUITasks.clickOKBtnOnConfirmUI(driver);
 
         Tools.wait(2);
 

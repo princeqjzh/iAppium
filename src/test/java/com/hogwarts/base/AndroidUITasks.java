@@ -68,10 +68,14 @@ public class AndroidUITasks {
      * @param driver
      * @throws Exception
      */
-    public static void clickOKBtnOnConfirmUI(AppiumDriver driver) throws UINotFoundException {
-        List<WebElement> btnEles = findObjectsByXPath("//android.widget.Button[contains(@resource-id,'android:id/button1')]", driver);
-        btnEles.get(0).click();
-        logger.info("Click the OK button！");
+    public static void clickOKBtnOnConfirmUI(AppiumDriver driver) {
+        try {
+            List<WebElement> btnEles = findObjectsByXPath("//android.widget.Button[contains(@resource-id,'android:id/button1')]", driver, 2);
+            btnEles.get(0).click();
+            logger.info("Click the OK button！");
+        }catch (UINotFoundException uiex){
+            logger.info("No confirm dialog.");
+        }
     }
 
     /**

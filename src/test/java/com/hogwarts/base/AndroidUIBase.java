@@ -45,7 +45,6 @@ public abstract class AndroidUIBase {
         capabilities.setCapability("platformVersion", platformVersion);
 
         //设置安卓系统uid
-        capabilities.setCapability("deviceName", androidUid);
         capabilities.setCapability("udid", androidUid);
 
         //配置apk文件
@@ -55,8 +54,11 @@ public abstract class AndroidUIBase {
         capabilities.setCapability("appPackage", appPackage);
         capabilities.setCapability("appActivity", appActivity);
         capabilities.setCapability("unicodeKeyboard", true);
-        capabilities.setCapability("resetKeyboard", true);
+        capabilities.setCapability("resetKeyboard", false);
         capabilities.setCapability("noReset", true);
+        capabilities.setCapability("autoAcceptAlerts", true);
+        capabilities.setCapability("autoGrantPermissions", true);
+        capabilities.setCapability("automationName", "UiAutomator2");
 
         driver = new AndroidDriver(new URL(appiumURL), capabilities);
         logger.info("Implement drvier instance ...");
