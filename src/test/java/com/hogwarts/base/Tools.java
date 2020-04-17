@@ -52,6 +52,16 @@ public class Tools {
     }
 
     /**
+     * 获取对应安卓的release版本
+     * @param uid
+     * @return
+     */
+    public static void uninstallPackage(String uid){
+        List<String> al = runExec("adb -s " + uid + " uninstall com.example.android.contactmanager");
+        logger.info("Clean the contact manager app.");
+    }
+
+    /**
      * 获取随机安卓uid
      * @return
      */

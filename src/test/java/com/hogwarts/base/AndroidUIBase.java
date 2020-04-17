@@ -73,6 +73,7 @@ public abstract class AndroidUIBase {
         }
 
         driver.quit();
+        Tools.uninstallPackage(androidUid);
     }
 
 

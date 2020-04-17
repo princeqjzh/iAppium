@@ -20,6 +20,9 @@ public class ContactManagerTest extends AndroidUIBase {
     public void runTest() throws Exception {
         testcaseName = "ContactManager android automation test";
 
+        //workaround 版本问题
+        AndroidUITasks.clickOKBtnOnConfirmUI(driver);
+
         AndroidUITasks.clickAddContactBtn(driver);
 
         AndroidUITasks.inputContactName(driver);
