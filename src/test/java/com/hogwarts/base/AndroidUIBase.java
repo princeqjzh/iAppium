@@ -53,7 +53,7 @@ public abstract class AndroidUIBase {
         //设置app的主包名和主类名
         capabilities.setCapability("appPackage", appPackage);
         capabilities.setCapability("appActivity", appActivity);
-        capabilities.setCapability("unicodeKeyboard", true);
+        capabilities.setCapability("unicodeKeyboard", false);
         capabilities.setCapability("resetKeyboard", false);
         capabilities.setCapability("noReset", true);
         capabilities.setCapability("autoAcceptAlerts", true);
