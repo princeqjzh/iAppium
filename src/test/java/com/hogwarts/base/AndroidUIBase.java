@@ -3,8 +3,8 @@ package com.hogwarts.base;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import org.apache.log4j.Logger;
-import org.junit.After;
-import org.junit.Before;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import java.io.File;
@@ -28,7 +28,7 @@ public abstract class AndroidUIBase {
     protected AppiumDriver driver;
     protected String testcaseName = "";
 
-    @Before
+    @BeforeEach
     public void begin() throws MalformedURLException {
         //安卓apk文件路径
         File classpathRoot = new File(System.getProperty("user.dir"));
@@ -64,7 +64,7 @@ public abstract class AndroidUIBase {
         logger.info("Implement drvier instance ...");
     }
 
-    @After
+    @AfterEach
     public void tearDown(){
         logger.info("Automation test " + testcaseName + " finished.");
 

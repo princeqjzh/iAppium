@@ -4,8 +4,8 @@ import com.hogwarts.base.AndroidUIBase;
 import com.hogwarts.base.AndroidUITasks;
 import com.hogwarts.base.Tools;
 import org.apache.log4j.Logger;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
@@ -48,7 +48,7 @@ public class ContactManagerTest extends AndroidUIBase {
                 result = true;
             }
         }
-        Assert.assertTrue("VP: verify back to the main screen", result);
+        Assertions.assertTrue(result, "VP: verify back to the main screen");
 
     }
 }
