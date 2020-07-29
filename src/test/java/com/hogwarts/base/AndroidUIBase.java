@@ -11,9 +11,6 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-/**
- * Created by JiZhi.Qian on 2019/3/11.
- */
 public abstract class AndroidUIBase {
     private Logger logger = Logger.getLogger(AndroidUIBase.class);
     private String appiumURL = "http://127.0.0.1:4723/wd/hub"; //appium 服务URL地址

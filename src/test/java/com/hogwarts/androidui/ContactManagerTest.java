@@ -7,12 +7,8 @@ import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebElement;
-
 import java.util.List;
 
-/**
- * Created by JiZhi.Qian on 2019/3/11.
- */
 public class ContactManagerTest extends AndroidUIBase {
     private Logger logger = Logger.getLogger(ContactManagerTest.class);
 
