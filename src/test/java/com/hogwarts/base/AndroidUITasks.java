@@ -2,6 +2,7 @@ package com.hogwarts.base;
 
 import io.appium.java_client.AppiumDriver;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
@@ -78,6 +79,17 @@ public class AndroidUITasks {
         }
     }
 
+    public static void clickClosApp(AppiumDriver driver) {
+        try {
+            List<WebElement> btnEles = findObjectsByXPath("//android.widget.Button[contains(@resource-id,'android:id/aerr_close')]", driver, 2);
+            btnEles.get(0).click();
+            logger.info("Click the Close App button！");
+            Tools.wait(2);
+        }catch (Exception uiex){
+            logger.info("No confirm dialog.");
+        }
+    }
+
     /**
      * 找元素，固定最长等待15秒
      *
@@ -106,7 +118,7 @@ public class AndroidUITasks {
         long now = System.currentTimeMillis();
         while (((now - start) < waitMax * 1000) && (size == 0)) {
             Tools.wait(1);
-            objs = driver.findElementsByXPath(xpath);
+            objs = driver.findElements(By.xpath(xpath));
             if (objs != null) {
                 size = objs.size();
             }

@@ -95,6 +95,14 @@ public class Tools {
         return deviceIds;
     }
 
+    public static void launchApp(String packageName, String activityName){
+        String cmd = "adb shell am start -n " + packageName + "/" + activityName;
+        List<String> lines = runExec(cmd);
+        for(String line: lines){
+            logger.info(line);
+        }
+    }
+
     /**
      * 运行命令行
      * @param cmd

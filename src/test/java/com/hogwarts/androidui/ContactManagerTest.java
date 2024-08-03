@@ -6,7 +6,9 @@ import com.hogwarts.base.Tools;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+
 import java.util.List;
 
 public class ContactManagerTest extends AndroidUIBase {
@@ -32,10 +34,14 @@ public class ContactManagerTest extends AndroidUIBase {
         //workaround 权限问题
         AndroidUITasks.clickOKBtnOnConfirmUI(driver);
 
+        //workaround close app 问题
+        AndroidUITasks.clickClosApp(driver);
+        Tools.launchApp(appPackage, appActivity);
+
         Tools.wait(2);
 
         //验证是否回到了首页
-        List<WebElement> textViews = driver.findElementsByClassName("android.widget.TextView");
+        List<WebElement> textViews = driver.findElements(By.className("android.widget.TextView"));
         boolean result = false;
         for (int i = 0; i < textViews.size(); i++) {
             WebElement elem = textViews.get(0);

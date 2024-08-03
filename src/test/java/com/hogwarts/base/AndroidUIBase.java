@@ -17,47 +17,35 @@ public abstract class AndroidUIBase {
 
     private String platformName = "Android"; //平台名称
     private String deviceName = "Android Emulator"; //设备名称(可以是假的)
-    private String appPackage = "com.example.android.contactmanager";//安卓应用包名
-    private String appActivity = ".ContactManager"; //安卓activity类
+    protected String appPackage = "com.example.android.contactmanager";//安卓应用包名
+    protected String appActivity = appPackage + ".ContactManager"; //安卓activity类
     private String androidUid = Tools.getAndroidDeviceId(); //安卓设备Uid(不能是假的)
-    private String platformVersion = Tools.getDeviceRelease(androidUid); //安卓设备平台版本
 
     protected AppiumDriver driver;
     protected String testcaseName = "";
 
     @BeforeEach
     public void begin() throws MalformedURLException {
-        //安卓apk文件路径
-        File classpathRoot = new File(System.getProperty("user.dir"));
-        File appDir = new File(classpathRoot, "apps");
-        File app = new File(appDir, "ContactManager.apk");
-        String absolutePath = app.getAbsolutePath();
-        logger.info("apk full path: " + absolutePath);
-
         //设置Desired Capabilities相关参数
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability(CapabilityType.BROWSER_NAME, "");
         capabilities.setCapability("platformName", platformName);
-        capabilities.setCapability("deviceName", deviceName);
-        capabilities.setCapability("platformVersion", platformVersion);
+        capabilities.setCapability("appium:deviceName", deviceName);
 
         //设置安卓系统uid
-        capabilities.setCapability("udid", androidUid);
-
-        //配置apk文件
-        capabilities.setCapability("app", absolutePath);
+        capabilities.setCapability("appium:udid", androidUid);
 
         //设置app的主包名和主类名
-        capabilities.setCapability("appPackage", appPackage);
-        capabilities.setCapability("appActivity", appActivity);
-        capabilities.setCapability("unicodeKeyboard", false);
-        capabilities.setCapability("resetKeyboard", false);
-        capabilities.setCapability("noReset", true);
-        capabilities.setCapability("autoAcceptAlerts", true);
-        capabilities.setCapability("autoGrantPermissions", true);
-        capabilities.setCapability("automationName", "UiAutomator2");
+        capabilities.setCapability("appium:appPackage", appPackage);
+        capabilities.setCapability("appium:appActivity", appActivity);
+        capabilities.setCapability("appium:resetKeyboard", false);
+        capabilities.setCapability("appium:noReset", true);
+        capabilities.setCapability("appium:autoAcceptAlerts", true);
+        capabilities.setCapability("appium:autoGrantPermissions", true);
+        capabilities.setCapability("appium:automationName", "UiAutomator2");
 
-        driver = new AndroidDriver(new URL(appiumURL), capabilities);
+        driver = new AppiumDriver(new URL(appiumURL), capabilities);
+        Tools.launchApp(appPackage, appActivity);
         logger.info("Implement drvier instance ...");
     }
 
@@ -68,9 +56,8 @@ public abstract class AndroidUIBase {
         if (driver == null) {
             return;
         }
-
         driver.quit();
-        Tools.uninstallPackage(androidUid);
+//        Tools.uninstallPackage(androidUid);
     }
 
 
