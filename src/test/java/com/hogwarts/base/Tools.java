@@ -133,4 +133,16 @@ public class Tools {
 
         return output;
     }
+
+    public static void main(String[] args) {
+        String deviceID = getAndroidDeviceId();
+        String deviceRelease = getDeviceRelease(deviceID);
+
+        System.out.println("Device ID = " + deviceID);
+        System.out.println("Device Release = " + deviceRelease);
+
+        String appPackage = "com.example.android.contactmanager";
+        String appActivity = appPackage + ".ContactManager";
+        launchApp(appPackage, appActivity);
+    }
 }
