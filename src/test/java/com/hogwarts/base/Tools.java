@@ -95,8 +95,8 @@ public class Tools {
         return deviceIds;
     }
 
-    public static void launchApp(String packageName, String activityName){
-        String cmd = "adb shell am start -n " + packageName + "/" + activityName;
+    public static void launchApp(String udid, String packageName, String activityName){
+        String cmd = "adb -s " + udid + " shell am start -n " + packageName + "/" + activityName;
         List<String> lines = runExec(cmd);
         for(String line: lines){
             logger.info(line);
@@ -135,14 +135,17 @@ public class Tools {
     }
 
     public static void main(String[] args) {
+        List<String> deviceIDs = getAndroidDeviceIDs();
         String deviceID = getAndroidDeviceId();
         String deviceRelease = getDeviceRelease(deviceID);
+
+        System.out.println("Device IDs = " + deviceIDs);
 
         System.out.println("Device ID = " + deviceID);
         System.out.println("Device Release = " + deviceRelease);
 
         String appPackage = "com.example.android.contactmanager";
         String appActivity = appPackage + ".ContactManager";
-        launchApp(appPackage, appActivity);
+        launchApp(deviceID, appPackage, appActivity);
     }
 }

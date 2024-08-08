@@ -36,7 +36,7 @@ public class ContactManagerTest extends AndroidUIBase {
 
         //workaround close app 问题
         AndroidUITasks.clickClosApp(driver);
-        Tools.launchApp(appPackage, appActivity);
+        Tools.launchApp(androidUid, appPackage, appActivity);
 
         Tools.wait(2);
 

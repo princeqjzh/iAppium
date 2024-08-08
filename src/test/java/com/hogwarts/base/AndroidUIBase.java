@@ -19,7 +19,7 @@ public abstract class AndroidUIBase {
     private String deviceName = "Android Emulator"; //设备名称(可以是假的)
     protected String appPackage = "com.example.android.contactmanager";//安卓应用包名
     protected String appActivity = appPackage + ".ContactManager"; //安卓activity类
-    private String androidUid = Tools.getAndroidDeviceId(); //安卓设备Uid(不能是假的)
+    protected String androidUid = Tools.getAndroidDeviceId(); //安卓设备Uid(不能是假的)
 
     protected AppiumDriver driver;
     protected String testcaseName = "";
@@ -45,7 +45,7 @@ public abstract class AndroidUIBase {
         capabilities.setCapability("appium:automationName", "UiAutomator2");
 
         driver = new AppiumDriver(new URL(appiumURL), capabilities);
-        Tools.launchApp(appPackage, appActivity);
+        Tools.launchApp(androidUid, appPackage, appActivity);
         logger.info("Implement drvier instance ...");
     }
 
