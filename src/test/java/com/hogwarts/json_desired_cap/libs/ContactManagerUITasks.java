@@ -2,9 +2,9 @@ package com.hogwarts.json_desired_cap.libs;
 
 import com.hogwarts.code_desired_cap.base.Tools;
 import com.hogwarts.code_desired_cap.base.UINotFoundException;
-import io.appium.java_client.AppiumDriver;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
@@ -19,7 +19,7 @@ public class ContactManagerUITasks {
      * @param driver
      * @throws Exception
      */
-    public static void clickSaveBtn(AppiumDriver driver) throws Exception {
+    public static void clickSaveBtn(WebDriver driver) throws Exception {
         List<WebElement> btnEles =
                 findObjectsByXPath("//android.widget.Button[contains(@resource-id,'contactSaveButton')]", driver);
         btnEles.get(0).click();
@@ -32,7 +32,7 @@ public class ContactManagerUITasks {
      * @param driver
      * @throws Exception
      */
-    public static void clickAddContactBtn(AppiumDriver driver) throws Exception {
+    public static void clickAddContactBtn(WebDriver driver) throws Exception {
         List<WebElement> btnEles =
                 findObjectsByXPath("//android.widget.Button[contains(@resource-id,'addContactButton')]", driver);
         btnEles.get(0).click();
@@ -45,7 +45,7 @@ public class ContactManagerUITasks {
      * @param driver
      * @throws Exception
      */
-    public static void inputContactName(AppiumDriver driver) throws Exception {
+    public static void inputContactName(WebDriver driver) throws Exception {
         List<WebElement> btnEles =
                 findObjectsByXPath("//android.widget.EditText[contains(@resource-id,'contactNameEditText')]", driver);
         btnEles.get(0).sendKeys("A San");
@@ -58,7 +58,7 @@ public class ContactManagerUITasks {
      * @param driver
      * @throws Exception
      */
-    public static void inputEmail(AppiumDriver driver) throws Exception {
+    public static void inputEmail(WebDriver driver) throws Exception {
         List<WebElement> btnEles =
                 findObjectsByXPath("//android.widget.EditText[contains(@resource-id,'contactEmailEditText')]", driver);
         btnEles.get(0).sendKeys("asan@example.com");
@@ -71,7 +71,7 @@ public class ContactManagerUITasks {
      * @param driver
      * @throws Exception
      */
-    public static void clickOKBtnOnConfirmUI(AppiumDriver driver) {
+    public static void clickOKBtnOnConfirmUI(WebDriver driver) {
         try {
             List<WebElement> btnEles = findObjectsByXPath("//android.widget.Button[contains(@resource-id,'android:id/button1')]", driver, 2);
             btnEles.get(0).click();
@@ -81,7 +81,7 @@ public class ContactManagerUITasks {
         }
     }
 
-    public static void clickClosApp(AppiumDriver driver) {
+    public static void clickClosApp(WebDriver driver) {
         try {
             List<WebElement> btnEles = findObjectsByXPath("//android.widget.Button[contains(@resource-id,'android:id/aerr_close')]", driver, 2);
             btnEles.get(0).click();
@@ -100,7 +100,7 @@ public class ContactManagerUITasks {
      * @return
      * @throws UINotFoundException
      */
-    private static List<WebElement> findObjectsByXPath(String xpath, AppiumDriver driver) throws UINotFoundException {
+    private static List<WebElement> findObjectsByXPath(String xpath, WebDriver driver) throws UINotFoundException {
         return findObjectsByXPath(xpath, driver, 5);
     }
 
@@ -113,7 +113,7 @@ public class ContactManagerUITasks {
      * @return
      * @throws UINotFoundException
      */
-    private static List<WebElement> findObjectsByXPath(String xpath, AppiumDriver driver, int waitMax) throws UINotFoundException {
+    private static List<WebElement> findObjectsByXPath(String xpath, WebDriver driver, int waitMax) throws UINotFoundException {
         int size = 0;
         List<WebElement> objs = null;
         long start = System.currentTimeMillis();

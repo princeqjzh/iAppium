@@ -1,0 +1,55 @@
+{
+  "mobileapp": {
+    "appiumServer": "http://127.0.0.1:4723/wd/hub",
+    "local": {
+      "androidEmul_noReset": {
+        "appiumServer": "http://127.0.0.1:4723/wd/hub",
+        "desire_caps": {
+          "platformName": "Android",
+          "appium:deviceName": "<替换成实际模拟器设备名称>",
+          "appium:udid": "<替换成实际模拟器设备UDID>",
+          "appium:noReset": true,
+          "appium:resetKeyboard": false,
+          "appium:appPackage": "com.example.android.contactmanager",
+          "appium:appActivity": "com.example.android.contactmanager.ContactManager",
+          "appium:autoAcceptAlerts": true,
+          "appium:autoGrantPermissions": true,
+          "browserName": "",
+          "appium:automationName": "UiAutomator2"
+        }
+      },
+      "androidEmul_Chrome": {
+        "appiumServer": "http://127.0.0.1:4723/wd/hub",
+        "desire_caps": {
+          "platformName": "Android",
+          "appium:deviceName": "<替换成实际模拟器设备名称>",
+          "appium:udid": "<替换成实际模拟器设备UDID>",
+          "appium:noReset": true,
+          "appium:resetKeyboard": false,
+          "appium:autoAcceptsAlerts": true,
+          "appium:autoGrantPermissions": true,
+          "browserName": "chrome",
+          "browserVersion": "<替换成实际移动Chrome 浏览器版本>",
+          "appium:automationName": "UiAutomator2",
+          "appium:newCommandTimeout": 120
+        }
+      },
+      "androidReal_noReset": {
+        "appiumServer": "http://127.0.0.1:4723/wd/hub",
+        "desire_caps": {
+          "platformName": "Android",
+          "appium:deviceName": "<替换成实际真机设备名称>",
+          "appium:udid": "<替换成实际真机设备UDID>",
+          "appium:noReset": true,
+          "appium:resetKeyboard": false,
+          "appium:appPackage": "com.example.android.contactmanager",
+          "appium:appActivity": "com.example.android.contactmanager.ContactManager",
+          "appium:autoAcceptAlerts": true,
+          "appium:autoGrantPermissions": true,
+          "browserName": "",
+          "appium:automationName": "UiAutomator2"
+        }
+      }
+    }
+  }
+}

@@ -9,7 +9,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.TestInfo;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,7 +24,7 @@ import java.util.Map;
 import java.util.Set;
 
 public abstract class AppiumBaseTest extends BaseTest {
-    protected AppiumDriver driver;
+    protected WebDriver driver;
     protected String appPackage;
     protected String appActivity;
     protected String androidUid;
@@ -34,10 +36,10 @@ public abstract class AppiumBaseTest extends BaseTest {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         String desiredCapsFullPath = System.getenv("desired_cap");
         config = Tools.readJsonFile(desiredCapsFullPath);
-        String remoteURL = Tools.deepGetJsonStringVal(config, new String[]{"mobileapp", "appiumServer"}
+        String remoteURL = Tools.deepGetJsonStringVal(config, new String[]{"mobileapp", "local", deviceName, "appiumServer"}
                 , "http://localhost:4723/wd/hub");
         Logger.info("在本地运行自动化测试");
-        JsonObject localDesireCap = Tools.deepGetJsonObjVal(config, new String[]{"mobileapp", "local", deviceName});
+        JsonObject localDesireCap = Tools.deepGetJsonObjVal(config, new String[]{"mobileapp", "local", deviceName, "desire_caps"});
         Set<Map.Entry<String, JsonElement>> entries = localDesireCap.entrySet();
         for (Map.Entry<String, JsonElement> entry : entries) {
             String key = entry.getKey();
@@ -51,11 +53,14 @@ public abstract class AppiumBaseTest extends BaseTest {
         }
         Logger.info("Remote URL = " + remoteURL);
         Logger.info("The appium desire capabilities: " + capabilities);
-        appPackage = capabilities.getCapability("appium:appPackage").toString();
-        appActivity = capabilities.getCapability("appium:appActivity").toString();
         androidUid = capabilities.getCapability("appium:udid").toString();
-        driver = new AppiumDriver(new URL(remoteURL), capabilities);
-        Tools.launchApp(androidUid, appPackage, appActivity);
+        driver = new RemoteWebDriver(new URL(remoteURL), capabilities);
+        String browserName = capabilities.getCapability("browserName").toString();
+        if(browserName.equalsIgnoreCase("")) {
+            appPackage = capabilities.getCapability("appium:appPackage").toString();
+            appActivity = capabilities.getCapability("appium:appActivity").toString();
+            Tools.launchApp(androidUid, appPackage, appActivity);
+        }
     }
 
     @AfterEach

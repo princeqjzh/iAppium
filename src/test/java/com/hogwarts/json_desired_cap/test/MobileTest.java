@@ -1,17 +1,11 @@
 package com.hogwarts.json_desired_cap.test;
 
-//import com.hs.framework.appium.AppiumBaseTest;
-//import com.hs.libs.mobile.AndroidUITasks;
-//import com.hs.libs.mobile.IOSUITasks;
-//import com.hs.utils.Logger;
-//import com.hs.utils.Tools;
-import com.hogwarts.json_desired_cap.libs.ContactManagerUITasks;
 import com.hogwarts.json_desired_cap.base.AppiumBaseTest;
+import com.hogwarts.json_desired_cap.libs.ContactManagerUITasks;
+import com.hogwarts.json_desired_cap.libs.web_po.BingOps;
 import com.hogwarts.json_desired_cap.utils.Logger;
 import com.hogwarts.json_desired_cap.utils.Tools;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.parallel.Execution;
-import org.junit.jupiter.api.parallel.ExecutionMode;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.openqa.selenium.By;
@@ -19,14 +13,10 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-@Execution(ExecutionMode.SAME_THREAD)
 public class MobileTest extends AppiumBaseTest {
 
     int pausePeriod = 15; //Second
-
-    @ParameterizedTest
-    @ValueSource(strings = {"androidEmul1"})
-    public void AndroidAutomationTestSample(String deviceName) throws Exception {
+    private void NoResetBaseRun(String deviceName) throws Exception{
         InitDriverByDeviceName(deviceName);
         Logger.info("开始\"" + this.testDisplayName + "\"的测试");
 
@@ -69,11 +59,33 @@ public class MobileTest extends AppiumBaseTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"android"})
+    @ValueSource(strings = {"androidEmul_noReset", "androidReal_noReset"})
+    public void AndroidAutomationNoResetTest(String deviceName) throws Exception {
+        NoResetBaseRun(deviceName);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"androidEmul_Chrome"})
+    public void AndroidAutomationChrome(String deviceName) throws Exception {
+        InitDriverByDeviceName(deviceName);
+        Logger.info("访问中文必应首页");
+        driver.get("https://cn.bing.com/");
+        Tools.wait(pausePeriod);
+
+        BingOps.inputText(driver, "测试");
+        com.hogwarts.code_desired_cap.base.Tools.wait(2);
+
+        BingOps.clickSearch(driver);
+        Tools.wait(pausePeriod);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = { "androidReal_noReset"})
     public void AndroidAutomationTestFailed(String deviceName) throws Exception {
 
         InitDriverByDeviceName(deviceName);
         Logger.info("开始\"" + this.testDisplayName + "\"的测试");
+        NoResetBaseRun(deviceName);
         Assertions.assertTrue(false, "故意失败演示");
     }
 }
