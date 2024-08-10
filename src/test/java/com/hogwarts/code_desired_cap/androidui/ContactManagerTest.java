@@ -1,8 +1,8 @@
-package com.hogwarts.androidui;
+package com.hogwarts.code_desired_cap.androidui;
 
-import com.hogwarts.base.AndroidUIBase;
-import com.hogwarts.base.AndroidUITasks;
-import com.hogwarts.base.Tools;
+import com.hogwarts.code_desired_cap.base.ContactManagerBase;
+import com.hogwarts.code_desired_cap.base.ContactManagerUITasks;
+import com.hogwarts.code_desired_cap.base.Tools;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -11,7 +11,7 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class ContactManagerTest extends AndroidUIBase {
+public class ContactManagerTest extends ContactManagerBase {
     private Logger logger = Logger.getLogger(ContactManagerTest.class);
 
     @Test
@@ -19,23 +19,23 @@ public class ContactManagerTest extends AndroidUIBase {
         testcaseName = "ContactManager android automation test";
 
         //workaround 版本问题
-        AndroidUITasks.clickOKBtnOnConfirmUI(driver);
+        ContactManagerUITasks.clickOKBtnOnConfirmUI(driver);
 
-        AndroidUITasks.clickAddContactBtn(driver);
+        ContactManagerUITasks.clickAddContactBtn(driver);
 
-        AndroidUITasks.inputContactName(driver);
+        ContactManagerUITasks.inputContactName(driver);
 
-        AndroidUITasks.inputEmail(driver);
+        ContactManagerUITasks.inputEmail(driver);
 
-        AndroidUITasks.clickSaveBtn(driver);
+        ContactManagerUITasks.clickSaveBtn(driver);
 
         Tools.wait(2);
 
         //workaround 权限问题
-        AndroidUITasks.clickOKBtnOnConfirmUI(driver);
+        ContactManagerUITasks.clickOKBtnOnConfirmUI(driver);
 
         //workaround close app 问题
-        AndroidUITasks.clickClosApp(driver);
+        ContactManagerUITasks.clickClosApp(driver);
         Tools.launchApp(androidUid, appPackage, appActivity);
 
         Tools.wait(2);

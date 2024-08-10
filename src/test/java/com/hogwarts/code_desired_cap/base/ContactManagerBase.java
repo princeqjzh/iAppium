@@ -1,18 +1,17 @@
-package com.hogwarts.base;
+package com.hogwarts.code_desired_cap.base;
 
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.android.AndroidDriver;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import java.io.File;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public abstract class AndroidUIBase {
-    private Logger logger = Logger.getLogger(AndroidUIBase.class);
+public abstract class ContactManagerBase {
+    private Logger logger = Logger.getLogger(ContactManagerBase.class);
     private String appiumURL = "http://127.0.0.1:4723/wd/hub"; //appium 服务URL地址
 
     private String platformName = "Android"; //平台名称

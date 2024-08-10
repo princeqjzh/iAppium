@@ -1,4 +1,4 @@
-package com.hogwarts.base;
+package com.hogwarts.code_desired_cap.base;
 
 import io.appium.java_client.AppiumDriver;
 import org.apache.log4j.Logger;
@@ -7,9 +7,9 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class AndroidUITasks {
+public class ContactManagerUITasks {
 
-    private static Logger logger = Logger.getLogger(AndroidUITasks.class);
+    private static Logger logger = Logger.getLogger(ContactManagerUITasks.class);
 
     /**
      * 单击Save 按钮

@@ -1,4 +1,4 @@
-package com.hogwarts.base;
+package com.hogwarts.code_desired_cap.base;
 
 import org.apache.log4j.Logger;
 
