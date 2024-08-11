@@ -16,9 +16,23 @@ import java.util.List;
 public class MobileTest extends AppiumBaseTest {
 
     int pausePeriod = 15; //Second
-    private void NoResetBaseRun(String deviceName) throws Exception{
+
+    /**
+     * 默认 isNoRest = true
+     * @param deviceName
+     * @throws Exception
+     */
+    private void BaseRun(String deviceName) throws Exception {
+        BaseRun(deviceName, true);
+    }
+
+    private void BaseRun(String deviceName, boolean isNoRest) throws Exception{
         InitDriverByDeviceName(deviceName);
         Logger.info("开始\"" + this.testDisplayName + "\"的测试");
+
+        //解决Reset界面
+        if(!isNoRest)
+            ContactManagerUITasks.clickContinueLink(driver);
 
         //workaround 版本问题
         ContactManagerUITasks.clickOKBtnOnConfirmUI(driver);
@@ -61,12 +75,19 @@ public class MobileTest extends AppiumBaseTest {
     @ParameterizedTest
     @ValueSource(strings = {"androidEmul_noReset", "androidReal_noReset"})
     public void AndroidAutomationNoResetTest(String deviceName) throws Exception {
-        NoResetBaseRun(deviceName);
+        BaseRun(deviceName);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"androidReal_Reset", "androidEmul_Reset"})
+    public void AndroidAutomationResetTest(String deviceName) throws Exception {
+        //测试 noReset == false 的情形
+        BaseRun(deviceName, false);
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"androidEmul_Chrome"})
-    public void AndroidAutomationChrome(String deviceName) throws Exception {
+    public void AndroidAutomationChromeTest(String deviceName) throws Exception {
         InitDriverByDeviceName(deviceName);
         Logger.info("访问中文必应首页");
         driver.get("https://cn.bing.com/");
@@ -81,11 +102,11 @@ public class MobileTest extends AppiumBaseTest {
 
     @ParameterizedTest
     @ValueSource(strings = { "androidReal_noReset"})
-    public void AndroidAutomationTestFailed(String deviceName) throws Exception {
+    public void AndroidAutomationFailedTest(String deviceName) throws Exception {
 
         InitDriverByDeviceName(deviceName);
         Logger.info("开始\"" + this.testDisplayName + "\"的测试");
-        NoResetBaseRun(deviceName);
+        BaseRun(deviceName);
         Assertions.assertTrue(false, "故意失败演示");
     }
 }

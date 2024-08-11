@@ -4,7 +4,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.hogwarts.json_desired_cap.utils.Logger;
 import com.hogwarts.json_desired_cap.utils.Tools;
-import io.appium.java_client.AppiumDriver;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.TestInfo;
 import org.openqa.selenium.OutputType;

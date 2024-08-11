@@ -1,6 +1,5 @@
 package com.hogwarts.json_desired_cap.base;
 
-//import com.hs.libs.api.HeadspinAPI;
 import com.hogwarts.json_desired_cap.utils.Logger;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
