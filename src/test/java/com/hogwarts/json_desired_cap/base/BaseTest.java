@@ -19,10 +19,6 @@ public abstract class BaseTest {
 
     protected String testDisplayName;
     protected String projRootPath;
-//    protected static final String appPackage = "com.example.android.contactmanager";
-//    protected static final String bundle = "com.ookla.speedtest";
-//    protected String androidBuildCommit = "androidSampleApp.apk";
-//    protected String iosBuildCommit = "Speedtest.ipa";
 
     @BeforeEach
     public void setUp(TestInfo testInfo) {
@@ -34,7 +30,6 @@ public abstract class BaseTest {
             testDisplayName = testMethod + "-" + testDisplayName;
         }
         projRootPath = System.getProperty("user.dir");
-//        hsAPI = new HeadspinAPI();
         Logger.info(testDisplayName + " - Test setUp !");
     }
 
