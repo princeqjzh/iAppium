@@ -116,11 +116,11 @@ public class ContactManagerUITasks {
     }
 
     private static List<WebElement> findObjectsByXPath(String xpath, WebDriver driver, int waitMax) throws UINotFoundException {
-        return findObjectsByXPath(xpath, driver, waitMax, "xpath");
+        return findObjectsBySelector(xpath, driver, waitMax, "xpath");
     }
 
     private static List<WebElement> findObjectsByID(String id, WebDriver driver, int waitMax) throws UINotFoundException {
-        return findObjectsByXPath(id, driver, waitMax, "id");
+        return findObjectsBySelector(id, driver, waitMax, "id");
     }
 
     /**
@@ -132,7 +132,7 @@ public class ContactManagerUITasks {
      * @return
      * @throws UINotFoundException
      */
-    private static List<WebElement> findObjectsByXPath(String selector, WebDriver driver, int waitMax, String byType) throws UINotFoundException {
+    private static List<WebElement> findObjectsBySelector(String selector, WebDriver driver, int waitMax, String byType) throws UINotFoundException {
         int size = 0;
         List<WebElement> objs = null;
         long start = System.currentTimeMillis();

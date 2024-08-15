@@ -73,7 +73,7 @@ public class MobileTest extends AppiumBaseTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"androidEmul_noReset", "androidReal_noReset"})
+    @ValueSource(strings = {"androidReal_noReset", "androidEmul_noReset"})
     public void AndroidAutomationNoResetTest(String deviceName) throws Exception {
         BaseRun(deviceName);
     }

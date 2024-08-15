@@ -14,6 +14,12 @@
         <allure.version>2.13.2</allure.version>
     </properties>
     <dependencies>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-junit5</artifactId>
+            <version>${allure.version}</version>
+            <scope>test</scope>
+        </dependency>
         <!-- junit -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
