@@ -18,6 +18,22 @@
           "appium:automationName": "UiAutomator2"
         }
       },
+      "androidEmul_Reset": {
+        "appiumServer": "http://127.0.0.1:4723/wd/hub",
+        "desire_caps": {
+          "platformName": "Android",
+          "appium:deviceName": "<替换成实际模拟器设备名称>",
+          "appium:udid": "<替换成实际模拟器设备UDID>",
+          "appium:noReset": false,
+          "appium:resetKeyboard": false,
+          "appium:appPackage": "com.example.android.contactmanager",
+          "appium:appActivity": "com.example.android.contactmanager.ContactManager",
+          "appium:autoAcceptAlerts": true,
+          "appium:autoGrantPermissions": true,
+          "browserName": "",
+          "appium:automationName": "UiAutomator2"
+        }
+      },
       "androidEmul_Chrome": {
         "appiumServer": "http://127.0.0.1:4723/wd/hub",
         "desire_caps": {
